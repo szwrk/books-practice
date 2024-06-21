@@ -159,5 +159,38 @@ from emp e
 )
 order by is_non_null, COMMISSION_PCT asc
 ;
+## 2.6
+select * 
+from
+(
+select
+   e.*,
+   case when e.commission_pct is null then 0 else 1
+   end as is_non_null
+from emp e
+)
+order by is_non_null, COMMISSION_PCT ascselect * from
+(
+select
+   e.*,
+   case when e.commission_pct is null then 0 else 1
+   end as is_non_null
+from emp e
+)
+order by is_non_null, COMMISSION_PCT asc;
 ;
 
+## 2.7
+-- dynamic order
+select
+   e.*,
+   case when job_id = 'IT_PROG' then salary || '$'  
+      else 'dep.' || to_char(e.department_id) 
+   end as salary_info_else_department
+from emp e
+order by case when e.job_id = 'IT_PROG' then e.salary 
+   else e.department_id
+end
+;
+
+## 3.1
