@@ -193,4 +193,73 @@ order by case when e.job_id = 'IT_PROG' then e.salary
 end
 ;
 
-## 3.1
+## 3.1 simple union
+SELECT to_char(employee_id) FROM emp
+    UNION ALL
+SELECT '----------------' FROM dual   
+   UNION ALL
+SELECT to_char(employee_id) FROM emp
+;
+
+SELECT to_char(employee_id) FROM emp
+    UNION 
+SELECT '----------------' FROM emp   
+   UNION ALL
+SELECT to_char(employee_id) FROM emp
+;
+## 3.2
+desc emp;
+select e.employee_id, j.job_title
+from emp e, jobs j
+where e.job_id = j.job_id
+and e.employee_id < 110
+;
+select e.employee_id, j.job_title
+from emp e 
+   inner join jobs j on e.job_id = j.job_id
+where e.employee_id < 110
+;
+## 3.3 the same rows in the tables
+--free
+with q1 as (
+select * from emp where job_id = 'IT_PROG' or job_id = 'AD_VP'
+)
+,q2 as (
+select * from emp where job_id = 'IT_PROG')
+select *
+from q1 q1
+   join q2 on q1.employee_id = q2.employee_id
+;
+-- by first and last name
+with q1 as (
+select first_name, last_name from emp where job_id = 'IT_PROG' or job_id = 'AD_VP'
+)
+,q2 as (
+select first_name, last_name from emp where job_id = 'IT_PROG'
+)
+select q1.first_name, q1.last_name
+from q1 q1
+   join q2 on (q1.first_name = q2.first_name
+               and q1.last_name = q2.last_name)
+;
+--intersect
+with q1 as (
+select first_name, last_name from emp where job_id = 'IT_PROG' or job_id = 'AD_VP'
+)
+,q2 as (
+select first_name, last_name from emp where job_id = 'IT_PROG'
+)
+select * from q1
+intersect 
+select * from q2
+;
+## 3.4 subtraction
+with q1 as (
+select first_name, last_name, job_id from emp where job_id = 'IT_PROG' or job_id = 'AD_VP'
+)
+,q2 as (
+select first_name, last_name,job_id from emp where job_id = 'IT_PROG'
+)
+select * from q1
+minus 
+select * from q2
