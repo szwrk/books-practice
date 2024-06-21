@@ -1,4 +1,4 @@
---# BOOK: SQL ZAPYTANIA I TECHNIKI DLA BAZODANOWCÓW
+--# BOOK: SQL ZAPYTANIA I TECHNIKI DLA BAZODANOWCï¿½W
 --## PREPARE ORACLE DB 23C FREE DEVELOPER VM WITH HR SCHEMA
 create synonym emp for hr.employees
 create synonym dep for hr.departments
@@ -63,8 +63,9 @@ from dual
 ## 1.12 replace null
 select 
    emp.*
-   ,coalesce(emp.manager_id,-1)  as test
-   ,coalesce(emp.manager_id, emp.commission_pct,-1)  as test2  if any passed row columns contain null then return value coalesce(par,par, returnedValue), works like java method with example(args...columnsName, value)
+   ,coalesce(cast(emp.manager_id as varchar2(50)),'test')  as test_varchar
+   ,coalesce(emp.manager_id,-1)  as test_nvl
+   ,coalesce(emp.manager_id, emp.commission_pct, emp.salary,-1)  as return_first_notnull_val_or_new_val -- if any passed row columns contain null then return value coalesce(par,par, returnedValue), works like java method with example(args...columnsName, value)
 from emp 
 where manager_id is null
 ;
@@ -89,3 +90,74 @@ from emp e
    join dep d on e.department_id = d.department_id
 where e.department_id = 80
 order by hire_date desc
+;
+## 2.2 Sort by several column
+/**/
+select * 
+from emp e
+order by e.employee_id, e.last_name, e.first_name
+fetch first 10 rows only;
+## 2.3 Sort by subString last chars - 3
+select 
+   e.*
+   ,substr(first_name, length(first_name) - 2, length(first_name))
+   ,substr(first_name, length(first_name) - 2)
+from emp e
+order by substr(first_name, length(first_name) - 2, length(first_name))
+fetch first 10 rows only;
+;
+## 2.4 Sort by mixed columns (chars + number)
+/**/
+with tab1 as (
+select last_name ||' ' ||employee_id as col
+from emp
+)
+select
+   t.*
+   ,translate(col,'0123456789','##########') as a1 
+   ,replace(
+      translate(col,'0123456789','##########')
+   ,'#','') as a2
+   ,replace(col, --exampe, given: Ernst 104, Ernst, ''
+            replace(
+      translate(col,'0123456789','##########') 
+   ,'#',''),'') as a3
+   ,replace('TESTTTT','T') as a4 -- delete all occurance of T
+   ,replace(COL,'e') as a5 -- delete e char
+from tab1 t
+order by replace(col,
+   replace(
+      translate(col,'0123456789','##########')
+   ,'#',''),'')
+;
+
+## 2.5 Order and handle null
+/*
+   Default behavior
+   asc = nulls lasts
+   desc = nulls first
+   
+*/
+select * 
+from emp
+order by COMMISSION_PCT asc
+;
+--oracle
+select * 
+from emp
+order by COMMISSION_PCT asc nulls first
+;
+--workaround, group by null and non null
+select * 
+from
+(
+select
+   e.*,
+   case when e.commission_pct is null then 0 else 1
+   end as is_non_null
+from emp e
+)
+order by is_non_null, COMMISSION_PCT asc
+;
+;
+
