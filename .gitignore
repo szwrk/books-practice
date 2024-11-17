@@ -1,0 +1,27 @@
+# IntelliJ IDEA / PyCharm
+.idea/
+*.iml
+*.iws
+out/
+workspace.xml
+.idea_modules/
+target/
+# Pycharm
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+.env
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+.DS_Store
+# Python
+*.pkl
+*.log
+*.db
+*.sqlite
+*.sqlite3
+*.bak
