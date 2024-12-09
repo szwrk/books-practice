@@ -1,10 +1,11 @@
 --# BOOK: SQL ZAPYTANIA I TECHNIKI DLA BAZODANOWC�W
 --## PREPARE ORACLE DB 23C FREE DEVELOPER VM WITH HR SCHEMA
-create synonym emp for hr.employees
+create synonym emp for hr.employees;
 create synonym dep for hr.departments
 ;
 select *
 from dep;
+commit;
 ;
 select *
 from emp
@@ -253,7 +254,7 @@ select * from q1
 intersect 
 select * from q2
 ;
-## 3.4 subtraction
+-- ## 3.4 subtraction
 with q1 as (
 select first_name, last_name, job_id from emp where job_id = 'IT_PROG' or job_id = 'AD_VP'
 )
@@ -263,3 +264,102 @@ select first_name, last_name,job_id from emp where job_id = 'IT_PROG'
 select * from q1
 minus 
 select * from q2
+;
+
+with q1(test) as (
+   select 'TEST1'  FROM DUAL
+   UNION ALL
+   select 'TEST2' FROM DUAL
+   UNION ALL
+   select 'TEST3' FROM DUAL
+   ),
+   q2(test) as  (
+   select 'TEST1' FROM DUAL
+   )
+SELECT test FROM Q1 
+minus 
+SELECT test FROM Q2
+;
+-- PS w mySql nie ma takiej impl, btw: true or null = true; false or null = null
+
+with q1 (val) as (
+ select 10 from dual
+ union all
+ select 20 from dual
+ union all
+ select 40 from dual
+ union all
+ select 50 from dual
+)
+-- select * from q1
+--correlated subquery
+;
+select DEPARTMENT_ID
+from dep d
+where not exists (select null from emp e where d.department_id = e.department_id)
+;
+select d.department_id 
+from dep d
+where not exists (
+   select 1 
+   from newdept nd
+   where d.department_id = nd.department_id 
+)
+;
+--## 3.5 Technika *anti-joins*, np pokaz dzialy firmy ktore nie zatrudniaja nikogo tj pokaz wszystkie deps -> odfiltruj puste emol
+select d.DEPARTMENT_NAME
+from dep d left outer join emp e
+   on (d.department_id = e.department_id)
+where e.department_id is null
+;
+--##3.6 dodawanie zlaczen bez modyfikowanie instniejacych zlaczen
+select *
+from emp e, dep d
+where e.department_id = d.department_id
+;
+select e.name, d.loc, eb.received
+from emp e. join dept d
+on (e.department_id = d.department_id)
+left join emp_bonus eb
+ on (e.employee_id = eb.employee_id)
+ order by 2
+;
+-- scalar query version
+select e.name, d.loc,
+   (select eb.reveived from emp_bonus eb where eb.employee_id = e.employee_id) as reveived
+   from emp e, dept d
+   where e.department_id = d.department_id
+order by 2
+;
+--## 14.10 alternatywa dla 3.6 zwracajaca wiele kolumn
+create or replace type generic_obj 
+as object (
+val1 varchar2(10),
+val2 varchar2(10),
+val3 date
+)
+;
+/
+select e.deptno,
+e.ename,
+e.sal,
+(select generic_obj(d.dname, d.loc, sysdate +1)
+ from dept d
+ where e.deptno = d.deptno) multival
+from emp e
+;
+select x.deptno,
+x.ename,
+x.multivatl.val1 dname,
+x.multival.val2 loc,
+x.multival3 today,
+from (
+   select e.deptno,
+   e.ename,
+   e.sal,
+   (select generic_obj(d.dname, d.loc, sysdate+1)
+   from dept d
+    where e.deptno = d.deptno) multival
+    from emp e)
+    x
+)
