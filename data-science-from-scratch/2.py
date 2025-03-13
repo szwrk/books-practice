@@ -185,4 +185,41 @@ num_items = len(item_list)
 p(num_items)
 item_set = set(item_list)
 p(item_set)
+#  logic
+if 1 > 2:
+    message = "if"
+    p(message)
+elif 1 >3:
+    message = "elif"
+    p(message)
+else:
+    message = "else"
+    p(message)
+# tri log
+parity = "parzyste" if x % 2 == 0  else "nieparzyste"
 
+x = 0
+while x < 10:
+    p(f"{x} is smaller then 10")
+    x += 1
+
+for x in range(10):
+    print(f"{x} is smaller then 10")
+
+for x in range(10):
+    if x == 3:
+        p("cont")
+        continue
+    if x == 5:
+        p("break")
+        break
+    p(x)
+one_is_less = 1<2
+true_equals_false = True == False
+p(one_is_less)
+p(true_equals_false)
+x = None
+p(x)
+# p(x + 2) TypeError
+assert x == None # non pythonic
+assert x is None # that's ok
