@@ -25,3 +25,4 @@ pip-delete-this-directory.txt
 *.sqlite
 *.sqlite3
 *.bak
+.ipynb_checkpoints/
