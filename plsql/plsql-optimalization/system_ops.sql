@@ -1,0 +1,15 @@
+SELECT * FROM all_users WHERE upper(username) like  'FAKTURY'
+;
+/
+SHOW PARAMETER DB_CACHE_SIZE;
+ALTER SYSTEM SET DB_CACHE_SIZE = 512M SCOPE=SPFILE;
+;
+SHOW PARAMETER SHARED_POOL_SIZE;
+ALTER SYSTEM SET SHARED_POOL_SIZE = 256M SCOPE=SPFILE
+;
+
+
+update faktury.towary set  tow_cena = tow_cena *2;
+
+SELECT MIN(BEGIN_TIME) AS earliest_flashback, MAX(BEGIN_TIME) AS latest_flashback
+FROM V$UNDOSTAT;
