@@ -1,3 +1,4 @@
 {
-    "livePreview.defaultPreviewPath": "/spark/r/first-R.html"
+    "livePreview.defaultPreviewPath": "/spark/r/first-R.html",
+    "git.ignoreLimitWarning": true
 }
