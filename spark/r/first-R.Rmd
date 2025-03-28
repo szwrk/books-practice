@@ -1,0 +1,26 @@
+---
+title: "Test R"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 📥 Load CSV
+
+```{r}
+df <- read.csv("../dep_count.csv")
+head(df)
+```
+
+## 📊 `ggplot2 example`
+
+```{r}
+library(ggplot2)
+
+ggplot(df, aes(x = factor(label), y = count)) +
+    geom_col(fill = "steelblue") +
+    theme_minimal()
+```
+
