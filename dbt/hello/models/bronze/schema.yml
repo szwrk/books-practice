@@ -1,0 +1,7 @@
+﻿version: 2
+
+models:
+  - name: dbt_emp_raw
+    description: "Raw employee data"
+  - name: dbt_dept_raw
+    description: "Raw department data"

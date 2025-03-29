@@ -1,0 +1,21 @@
+﻿version: 2
+
+models:
+  - name: dbt_salary_silver
+    description: "Aggregated salary per department"
+    columns:
+      - name: salary_sum
+        description: "Total salary in the department"
+        tests:
+          - not_null
+
+      - name: dep_name
+        description: "Department name"
+        tests:
+          - not_null
+
+      - name: department_id
+        description: "Department ID"
+        tests:
+          - not_null
+          - unique

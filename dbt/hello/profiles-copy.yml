@@ -1,0 +1,13 @@
+hello:
+  outputs:
+    dev:
+      host: srv2.lan
+      password: oracle
+      port: 1521
+      protocol: tcp
+      schema: hr
+      service: free
+      threads: 1
+      type: oracle
+      user: hr
+  target: dev
