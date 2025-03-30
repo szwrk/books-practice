@@ -1,0 +1,25 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+ 
+    <changeSet id="1" author="arek">    
+        <createTable tableName="EMPLOYEES_RAW">
+            <column name="EMPLOYEE_ID" type="NUMBER(6,0)">
+                <constraints primaryKey="true" nullable="false"/>
+            <column/>
+            <column name="FIRST_NAME" type="VARCHAR2(20 BYTE)"/>
+            <column name="LAST_NAME" type="VARCHAR2(25 BYTE)"/>
+            <column name="EMAIL" type="VARCHAR2(25 BYTE)"/>
+            <column name="PHONE_NUMBER" type="VARCHAR2(20 BYTE)"/>
+            <column name="HIRE_DATE" type="DATE"/>
+            <column name="JOB_ID" type="VARCHAR2(10 BYTE)"/>
+            <column name="SALARY" type="NUMBER(8,2)"/>
+            <column name="COMMISSION_PCT" type="NUMBER(2,2)"/>
+            <column name="MANAGER_ID" type="NUMBER(6,0)"/>
+            <column name="DEPARTMENT_ID" type="NUMBER(4,0)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

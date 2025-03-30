@@ -1,3 +1,11 @@
 # DBT - hr_dwh
-## credentials
+MVP:
+- dbt
+- liquibase
+- pyspark
+
+## DBT
+**DB Credentials**
 /home/arek/.dbt/profiles.yml
+## Liquibse
+liquibase update
