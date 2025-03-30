@@ -1,0 +1,27 @@
+hello:
+  outputs:
+    dev:
+      database: FREE
+      host: srv2.lan
+      password: oracle
+      port: 1521
+      protocol: tcp
+      schema: hr
+      service: free
+      threads: 1
+      type: oracle
+      user: hr
+  target: dev
+hr_dwh:
+  outputs:
+    dev:
+      host: srv2.lan
+      password: oracle
+      port: 1521
+      protocol: '1'
+      schema: hr_dwh
+      service: free
+      threads: 1
+      type: oracle
+      user: hr_dwh
+  target: dev
