@@ -30,3 +30,7 @@ pip-delete-this-directory.txt
 # ide
 .vscode/
 .vscode/settings.json
+# dbt
+logs/
+target/
+dbt_packages/
