@@ -9,7 +9,7 @@
         <createTable tableName="EMPLOYEES_RAW">
             <column name="EMPLOYEE_ID" type="NUMBER(6,0)">
                 <constraints primaryKey="true" nullable="false"/>
-            <column/>
+            </column>
             <column name="FIRST_NAME" type="VARCHAR2(20 BYTE)"/>
             <column name="LAST_NAME" type="VARCHAR2(25 BYTE)"/>
             <column name="EMAIL" type="VARCHAR2(25 BYTE)"/>
