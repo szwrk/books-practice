@@ -1,0 +1,12 @@
+version: 2
+
+seeds:
+  - name: departments
+    description: "Słownik działów"
+    config: 
+      delimiter: ","
+    columns:
+      - name: DEPARTMENT_ID
+        tests:
+          - unique
+          - not_null

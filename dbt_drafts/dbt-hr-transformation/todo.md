@@ -1,0 +1,3 @@
+- [ ] DBT
+    - [x] seed departments.csv
+- [ ] Airflow
