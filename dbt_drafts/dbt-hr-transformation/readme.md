@@ -1,6 +1,9 @@
 # DBT - hr_dwh
+Components: 
+- ELT
+- Exploratory data analysis
 MVP:
-- duckdb (eda)
+- duckdb (exerimental)
 - dbt
 - liquibase
 - pyspark
