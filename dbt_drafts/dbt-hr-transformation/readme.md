@@ -1,12 +1,11 @@
 # DBT - hr_dwh
 Components: 
-- ELT
-- Exploratory data analysis
-MVP:
-- duckdb (exerimental)
-- dbt
-- liquibase
-- pyspark
+- Source CSV files
+- File validation, bash
+- Model CI/CD, Liquibase
+- Data cleaning (sql, pandas)
+- Exploratory data analysis (sql, pandas)
+- ELT (spark, airflow)
 
 ## Flow
 ```mermaid
@@ -17,6 +16,13 @@ graph TD
     dbt-seed --> |load| dwh1
     liquibase --> |setup schema|dwh1
 ```
+## Data architecture
+Medalion
+- bronze, raw, source of truth or archive
+- staging,
+    - clean data = prefix stg__*
+    - models dim__*, fct__*, int_*
+- marts, reports, metrics, buissness-ready data
 
 ## Transformations - DBT
 **DB Credentials**

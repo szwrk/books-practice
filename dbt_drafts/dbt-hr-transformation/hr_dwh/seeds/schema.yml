@@ -2,7 +2,7 @@ version: 2
 
 seeds:
   - name: departments
-    description: "Słownik działów"
+    description: "Departments"
     config: 
       delimiter: ","
     columns:

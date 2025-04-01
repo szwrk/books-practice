@@ -12,10 +12,10 @@ connection_props = {
     "driver": "oracle.jdbc.driver.OracleDriver"
 }
 
-dfhr = spark.read.csv("/data/emp.csv", header=True, inferSchema=True)
+dfhr = spark.read.csv("/data/raw_employees.csv", header=True, inferSchema=True)
 dfhr.write.jdbc(
     url=jdbc_url,
-    table="EMPLOYEES_RAW",
+    table="RAW_EMPLOYEES",
     mode="append",
     properties=connection_props
 )
