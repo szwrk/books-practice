@@ -2,8 +2,8 @@
 Components: 
 - Source CSV files
 - File validation, bash
-- Model CI/CD, Liquibase
-- Data cleaning (sql, pandas)
+- Schema, Liquibase
+- Data cleaning, raw_departmens.csv (sql, pandas)
 - Exploratory data analysis (sql, pandas)
 - ELT (spark, airflow)
 

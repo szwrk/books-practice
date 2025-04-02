@@ -3,6 +3,9 @@ version: 2
 seeds:
   - name: departments
     description: "Departments"
+    tags: [seed, bronze]
+    meta:
+      source_file: "raw_departments.csv"
     config: 
       delimiter: ","
     columns:
