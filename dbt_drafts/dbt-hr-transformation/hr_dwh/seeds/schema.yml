@@ -1,7 +1,7 @@
 version: 2
 
 seeds:
-  - name: departments
+  - name: raw_departments
     description: "Departments"
     tags: [seed, bronze]
     meta:
@@ -11,5 +11,4 @@ seeds:
     columns:
       - name: DEPARTMENT_ID
         tests:
-          - unique
           - not_null

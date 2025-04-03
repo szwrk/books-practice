@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: raw 
+    schema: hr_dwh 
+    tables:
+      - name: raw_departments    
+models:
+  - name: departments_update
+    description: "Update"
+  - name: departments_trimed
+    description: "Trim"
+    # columns:
+    #   - name: salary_sum
+    #     description: "Total salary in the department"
+    #     tests:
+    #       - not_null
