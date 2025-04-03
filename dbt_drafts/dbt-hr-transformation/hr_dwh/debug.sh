@@ -1,0 +1,1 @@
+echo "select * from debug;" | sql hr_dwh/oracle@srv2.lan:1521/free

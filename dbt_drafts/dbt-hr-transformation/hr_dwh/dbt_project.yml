@@ -31,7 +31,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   hr_dwh:
-    bronze:
+    debug:
       +materialized: view
     silver:
       +materialized: view
