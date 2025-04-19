@@ -3,11 +3,11 @@ This repository contains exercises based on my collection of books, focusing on 
 
 ## Practice Exercises
 **DBT**
-[dbt-hello-world](dbt_drafts/dbt-hello-world/)
+- [dbt-hello-world](dbt_drafts/dbt-hello-world/)
 
-[hr-dwh transformacje](dbt_drafts/dbt-hr-transformation/)
+- [hr-dwh transformacje](dbt_drafts/dbt-hr-transformation/)
 
 **Others**
-[sql-advance-queries](sql-advance-queries/)
+- [sql-advance-queries](sql-advance-queries/)
 
-[pyspark/drill-down](spark/drill-down/)
+- [pyspark/drill-down](spark/drill-down/)
