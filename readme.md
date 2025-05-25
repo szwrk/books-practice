@@ -21,8 +21,12 @@ This repository contains exercises based on my collection of books, focusing on 
 - [py-misc/drill-down](py-misc/drill-down/)  
   *Static drill-down with Pandas*  
   `#seaborn`   `#pandas`
-  
+
 **DBT**
 - [dbt-hello-world](dbt_drafts/dbt-hello-world/)  
   *Minimal dbt project*  
   `#sql` `#dbt` 
+
+---
+
+...and more!
