@@ -16,10 +16,12 @@ This repository contains exercises based on my collection of books, focusing on 
 **Spark**
 - [spark/vp-course](spark/vp-course/)  
   *PySpark Course + practice*  
+
 **Pandas**
 - [py-misc/drill-down](py-misc/drill-down/)  
   *Static drill-down with Pandas*  
   `#seaborn`   `#pandas`
+  
 **DBT**
 - [dbt-hello-world](dbt_drafts/dbt-hello-world/)  
   *Minimal dbt project*  
