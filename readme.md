@@ -9,17 +9,17 @@ This repository contains exercises based on my collection of books, focusing on 
   *Practice with Oracle HR schema*  
   `#sql` `#dbt` `#shell` `#duckdb` 
   `#liquibase` `#eda`  `#analytics`
-- [sql-advance-queries](sql-advance-queries/)  
+- [sql-advanced-queries](sql-advanced-queries/)  
   *Practice with analytical SQL (e.g. window functions)*  
   `#sql` `#jupiternotebook` `#oracle`
 
 **Spark**
-- [pyspark/drill-down](spark/drill-down/)  
-  *Static drill-down with PySpark*  
-  `#seaborn`   `#pandas`
-- [pyspark/vp](spark/vp/)  
+- [spark/vp-course](spark/vp-course/)  
   *PySpark Course + practice*  
-
+**Pandas**
+- [py-misc/drill-down](py-misc/drill-down/)  
+  *Static drill-down with Pandas*  
+  `#seaborn`   `#pandas`
 **DBT**
 - [dbt-hello-world](dbt_drafts/dbt-hello-world/)  
   *Minimal dbt project*  
